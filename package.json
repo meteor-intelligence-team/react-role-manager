@@ -1,0 +1,38 @@
+{
+  "name": "@techexmachina/react-role-manager",
+  "version": "0.9.0",
+  "description": "A simple react component to manage users roles/teams",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meteor-intelligence-team/react-role-manager.git"
+  },
+  "keywords": [
+    "react",
+    "meteor",
+    "semantic",
+    "ui",
+    "roles",
+    "teams",
+    "role",
+    "team",
+    "users",
+    "manage"
+  ],
+  "author": "Fen747",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/meteor-intelligence-team/react-role-manager/issues"
+  },
+  "homepage": "https://github.com/meteor-intelligence-team/react-role-manager#readme",
+  "dependencies": {
+    "prop-types": "^15.5.8",
+    "react": "^15.5.4",
+    "react-autobind": "^1.0.6",
+    "semantic-ui-css": "^2.2.10",
+    "semantic-ui-react": "^0.68.0"
+  }
+}
