@@ -120,11 +120,11 @@ export class RoleManagerExample extends Component {
 |       |Format|Required|What it does ?|
 |-------|-------|-------|-------|
 |loading|`boolean`| NO | Set to true if entries are being fetched / computed
-|onRoleChange|`{function}`| YES | A callback used to catch role changes on a specific user. Receives an array of roles (`strings`) & a user _id as parameters
-|onOptionChange|`{function}`| YES | A callback used to be called when the `Search` field or a role `Checkbox` is updated. Receives an array of roles (`strings`) & a search `string` as parameters
+|onRoleChange|`function`| YES | A callback used to catch role changes on a specific user. Receives an array of roles (`strings`) & a user _id as parameters
+|onOptionChange|`function`| YES | A callback used to be called when the `Search` field or a role `Checkbox` is updated. Receives an array of roles (`strings`) & a search `string` as parameters
 |roles|`[string]`| YES | An array of strings to display the different roles/teams that can be (un)checked for changing search options
 |results|`[object]`| NO | An array of user objects to fill the `TableGenerator`. Each object must have at least a `roles` attribute (array of `string`) and an `_id` (`string` or `number`)
-|columns|`[string | object]`| YES | An array of string or object representing the different columns displayed by the `TableGenerator`. Strings should match of the user object property. Objects must contains at least a `name` (`string`) property for naming the column, and a `as` property, which is a React.Component prototype of your choice to be displayed in the cell. Objects can also have an arbitrary `additionalProps` property, which will be passed to the `as` component.
+|columns|`[string` or `object]`| YES | An array of string or object representing the different columns displayed by the `TableGenerator`. Strings should match of the user object property. Objects must contains at least a `name` (`string`) property for naming the column, and a `as` property, which is a React.Component prototype of your choice to be displayed in the cell. Objects can also have an arbitrary `additionalProps` property, which will be passed to the `as` component.
 
 ## Notes
 

@@ -1,6 +1,6 @@
 {
   "name": "@techexmachina/react-role-manager",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A simple react component to manage users roles/teams",
   "main": "index.js",
   "scripts": {
