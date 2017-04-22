@@ -2,8 +2,73 @@ import React, { Component } from 'react';
 import autobind from 'react-autobind';
 import PropTypes from 'prop-types';
 import TableGenerator from '@techexmachina/react-table-generator';
-import { Segment, Checkbox, Grid, Header, Search } from 'semantic-ui-react'
+import { Segment, Checkbox, Grid, Header, Search, Dropdown} from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css';
+
+
+class RoleDropdown extends Component {
+  constructor( props ){
+    super( props );
+    autobind( this );
+
+    const roles = [...this.props.roles];
+    const options = roles.map( role => ({
+      key       : role,
+      value     : role,
+      text      : role,
+    }) );
+
+    this.state = {
+      options,
+      value: [...props.roles],
+    };
+  }
+
+  handleChange( event, { value } ){
+    this.setState({ value });
+    this.props.onRoleChange( value, this.props._id );
+  }
+
+  handleAddition( event, { value } ){
+    const options = [...this.state.options].filter( ({ key }) => key !== value );
+
+    options.push({ value,
+      key   : value,
+      text  : value,
+    });
+
+    this.setState({ options });
+  }
+
+  render(){
+    const { value, options } = this.state;
+
+    return (
+      <Dropdown
+        placeholder='Roles'
+        options={options}
+        value={value}
+        onAddItem={this.handleAddition}
+        onChange={this.handleChange}
+        allowAdditions
+        fluid
+        search
+        multiple
+        selection
+      />
+    );
+  }
+}
+
+RoleDropdown.propTypes = {
+  onRoleChange  : PropTypes.func.isRequired,
+  roles         : PropTypes.arrayOf( PropTypes.string ).isRequired,
+  _id           : PropTypes.oneOfType([
+                    PropTypes.string,
+                    PropTypes.number,
+                  ]).isRequired,
+};
+
 
 export default class RoleManager extends Component {
   constructor( props ){
@@ -38,7 +103,14 @@ export default class RoleManager extends Component {
 
   render(){
     const { searchValue } = this.state;
-    const { results, loading, roles, columns } = this.props;
+    const { results, loading, roles, columns, onRoleChange } = this.props;
+    const extendedColumns = [...columns];
+
+    extendedColumns.push({
+      name            : 'Roles',
+      as              : RoleDropdown,
+      additionalProps : { onRoleChange },
+    });
 
     return (
       <Segment >
@@ -61,12 +133,12 @@ export default class RoleManager extends Component {
           value={searchValue}
         />
 
-				<TableGenerator
-					title="Results"
-					columns={columns}
-					entries={results}
-					loading={loading}
-				/>
+        <TableGenerator
+          title="Results"
+          columns={extendedColumns}
+          entries={results}
+          loading={loading}
+        />
         
       </Segment>
     );
@@ -74,16 +146,25 @@ export default class RoleManager extends Component {
 }
 
 RoleManager.propTypes = {
-  loading 				: PropTypes.bool,
-  onOptionChange 	: PropTypes.func,
-  results 				: PropTypes.arrayOf( PropTypes.object ),
-  roles 					: PropTypes.arrayOf( PropTypes.string ),
-  columns 				: PropTypes.arrayOf(
-		  								PropTypes.oneOfType([
-		  									PropTypes.string,
-		  									PropTypes.shape({
-											    name: PropTypes.string,
-											    as: PropTypes.func // React Component Proto
-										  	})
-										  ])),
+  loading         : PropTypes.bool,
+  onOptionChange  : PropTypes.func.isRequired,
+  roles           : PropTypes.arrayOf( PropTypes.string ).isRequired,
+  results         : PropTypes.arrayOf(
+                      PropTypes.shape({
+                        roles : PropTypes.arrayOf( PropTypes.string ).isRequired,
+                        _id   : PropTypes.oneOfType([
+                                  PropTypes.string,
+                                  PropTypes.number,
+                                ]).isRequired,
+                      })
+                    ),
+  columns         : PropTypes.arrayOf(
+                      PropTypes.oneOfType([
+                        PropTypes.string,
+                        PropTypes.shape({
+                          name  : PropTypes.string,
+                          as    : PropTypes.func // React Component Proto
+                        })
+                      ])
+                    ).isRequired,
 };
