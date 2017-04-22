@@ -147,6 +147,7 @@ export default class RoleManager extends Component {
 
 RoleManager.propTypes = {
   loading         : PropTypes.bool,
+  onRoleChange    : PropTypes.func.isRequired,
   onOptionChange  : PropTypes.func.isRequired,
   roles           : PropTypes.arrayOf( PropTypes.string ).isRequired,
   results         : PropTypes.arrayOf(
@@ -162,8 +163,9 @@ RoleManager.propTypes = {
                       PropTypes.oneOfType([
                         PropTypes.string,
                         PropTypes.shape({
-                          name  : PropTypes.string,
-                          as    : PropTypes.func // React Component Proto
+                          name            : PropTypes.string.isRequired,
+                          as              : PropTypes.func.isRequired, // React Component Proto
+                          additionalProps : PropTypes.object,
                         })
                       ])
                     ).isRequired,
