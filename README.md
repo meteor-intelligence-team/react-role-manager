@@ -80,8 +80,8 @@ export class RoleManagerExample extends Component {
       const regexp = new RegExp( searchValue, 'i' );
       const results = users.filter( user => (
         ( !roles.length && regexp.test( user.name ) ) ||
-        ( roles.length && roles.indexOf( user.roles ) >= 0 && regexp.test( user.name ) ) ||
-        ( !searchValue && roles.length && roles.indexOf( user.roles ) >= 0 )
+        ( roles.length && roles.indexOf( user.roles[0] ) >= 0 && regexp.test( user.name ) ) ||
+        ( !searchValue && roles.length && roles.indexOf( user.roles[0] ) >= 0 )
       ) );
       
       this.setState({ loading: false, results });
