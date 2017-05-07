@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import autobind from 'react-autobind';
 import PropTypes from 'prop-types';
-import TableGenerator from '@techexmachina/react-table-generator';
+import TableGenerator from 'react-table-generator';
 import { Segment, Checkbox, Grid, Header, Search, Dropdown} from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css';
 
