@@ -149,14 +149,14 @@ RoleManager.propTypes = {
   loading         : PropTypes.bool,
   onRoleChange    : PropTypes.func.isRequired,
   onOptionChange  : PropTypes.func.isRequired,
-  roles           : PropTypes.arrayOf( PropTypes.string ).isRequired,
+  roles           : PropTypes.arrayOf( PropTypes.string ),
   results         : PropTypes.arrayOf(
                       PropTypes.shape({
-                        roles : PropTypes.arrayOf( PropTypes.string ).isRequired,
+                        roles : PropTypes.arrayOf( PropTypes.string ),
                         _id   : PropTypes.oneOfType([
                                   PropTypes.string,
                                   PropTypes.number,
-                                ]).isRequired,
+                                ]),
                       })
                     ),
   columns         : PropTypes.arrayOf(
@@ -169,4 +169,10 @@ RoleManager.propTypes = {
                         })
                       ])
                     ).isRequired,
+};
+
+RoleManager.defaultProps = {
+  loading : false,
+  roles   : [],
+  results : [],
 };
