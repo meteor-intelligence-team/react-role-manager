@@ -1,6 +1,6 @@
 {
   "name": "react-role-manager",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A simple react component to manage users roles/teams",
   "main": "index.js",
   "scripts": {
