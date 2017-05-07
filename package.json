@@ -1,5 +1,5 @@
 {
-  "name": "@techexmachina/react-role-manager",
+  "name": "react-role-manager",
   "version": "1.0.7",
   "description": "A simple react component to manage users roles/teams",
   "main": "index.js",
@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/meteor-intelligence-team/react-role-manager#readme",
   "dependencies": {
-    "@techexmachina/react-table-generator": "^1.0.1",
+    "react-table-generator": "^1.0.1",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-autobind": "^1.0.6",

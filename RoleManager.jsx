@@ -102,7 +102,7 @@ export default class RoleManager extends Component {
   }
 
   render(){
-    const { searchValue } = this.state;
+    const { searchValue, roleList } = this.state;
     const { results, loading, roles, columns, onRoleChange } = this.props;
     const extendedColumns = [...columns];
 
@@ -121,6 +121,7 @@ export default class RoleManager extends Component {
               <Checkbox
                 label={role}
                 onChange={this.onCheckRole}
+                checked={~~roleList.indexOf( role )}
               />
             </Grid.Column>
           )}
