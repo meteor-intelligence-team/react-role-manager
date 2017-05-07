@@ -121,7 +121,7 @@ export default class RoleManager extends Component {
               <Checkbox
                 label={role}
                 onChange={this.onCheckRole}
-                checked={~~roleList.indexOf( role )}
+                checked={roleList.indexOf( role ) >= 0}
               />
             </Grid.Column>
           )}
